@@ -21,6 +21,7 @@ import java.util.*;
  */
 public class EvaluadorPostfijo {
 
+
     /**
      * Permite saber si la expresión en la lista está balanceada
      * o no. Cada elemento de la lista es un elemento. DEBE OBlIGATORIAMENTE
@@ -45,8 +46,11 @@ public class EvaluadorPostfijo {
                 }
             }
         }
-
-        return delimitadores.isEmpty();
+        if(!delimitadores.isEmpty()){
+            return false;
+        }else{
+            return  true;
+        }
     }
 
     /**
@@ -57,9 +61,9 @@ public class EvaluadorPostfijo {
         // TODO: Escriba el algoritmo aquí
         for (int i = 0; i < expresion.size(); i++) {
             String element = expresion.get(i);
-            if (element.equals("[") || element.equals("]")) {
+            if (element.equals("[") || element.equals("{")) {
                 expresion.set(i, "(");
-            } else if (element.equals("{") || element.equals("}")) {
+            } else if (element.equals("]") || element.equals("}")) {
                 expresion.set(i, ")");
             }
         }
